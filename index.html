@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shapeshift Splash Screen</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #000;
+    }
+    
+    #splash {
+        position: relative;
+        width: 400px; /* Adjust width as needed */
+        height: 400px; /* Adjust height as needed */
+        background-image: url('https://media.gifs.nl/tetris-gifs-vie3nm.gif');
+        background-size: cover;
+        background-position: center;
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        animation: fadeIn 1.5s ease forwards;
+    }
+
+    .button {
+        position: absolute;
+        font-size: 20px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    #playButton {
+        bottom: 20px;
+        left: calc(50% - 90px); /* Adjust left position as needed */
+        background-color: #ff5733;
+        color: #fff;
+        border: none;
+        padding: 15px 30px;
+    }
+
+    #playButton:hover {
+        background-color: #e74c3c;
+    }
+
+    #infoButton {
+        bottom: 20px;
+        left: calc(50% + 30px); /* Adjust left position as needed */
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        padding: 15px 25px;
+    }
+
+    #infoButton:hover {
+        background-color: #2980b9;
+    }
+
+    h1 {
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 36px;
+        color: #fff;
+    }
+
+    #infoPopup {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+</style>
+</head>
+<body>
+    <div id="splash">
+        <h1>Shapeshift</h1>
+        <a href="/game.html" target="_blank"><button id="playButton" class="button">Play</button></a>
+        <button id="infoButton" class="button">Info</button>
+    </div>
+
+    <div id="infoPopup">
+        <span class="close">&times;</span>
+        <h2>Controls</h2>
+        <p>swipe left (left) </p>
+        <p> swipe right(right)</p>
+        <p>swipe down(down)  </p>
+        <p> tap on screen(rotate)</p>
+    </div>
+
+    <script>
+        document.getElementById("infoButton").onclick = function() {
+            document.getElementById("infoPopup").style.display = "block";
+        };
+
+        document.getElementsByClassName("close")[0].onclick = function() {
+            document.getElementById("infoPopup").style.display = "none";
+        };
+    </script>
+</body>
+</html>
