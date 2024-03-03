@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ShapeShifter</title>
+  <title>Basic Tetris</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       text-align: center;
       margin: 0;
       padding: 0;
-      background-color: #272727 ; /* Background color - blue */
+      background-color: #272727; /* Background color - blue */
       color: #ffffff; /* Text color - white */
     }
     #gameContainer {
@@ -31,24 +31,16 @@
       margin-top: 10px;
       font-size: 24px;
     }
-    .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-        }
   </style>
 </head>
 <body>
-  <div id="container">
-    <h1>ShapeShifter</h1>
+  <div id="gameContainer">
+    <h1>Basic Tetris</h1>
     <p>Controls: Swipe to move, Tap outside grid rotate</p>
     <p>Score: <span id="score">0</span></p>
     <canvas id="gameCanvas" width="200" height="400"></canvas>
- 
+   
   </div>
-
   <script>
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
@@ -56,6 +48,7 @@
     const cols = canvas.width / blockSize;
     const rows = canvas.height / blockSize;
     const board = [];
+
     let piece;
     let score = 0;
 
@@ -131,23 +124,22 @@
         });
       }
     }
-
-    // Move the piece down
-    function moveDown() {
-      piece.y++;
-      if (collides()) {
-        piece.y--;
-        setTimeout(() => {
-          merge();
-          checkRows();
-          piece = {
-            ...randomShape(),
-            x: Math.floor(cols / 2) - 1,
-            y: 0
-          };
-        }, 500); // Delay of one-third of a second (333 milliseconds)
-      }
-    }
+// Move the piece down
+function moveDown() {
+  piece.y++;
+  if (collides()) {
+    piece.y--;
+    setTimeout(() => {
+      merge();
+      checkRows();
+      piece = {
+        ...randomShape(),
+        x: Math.floor(cols / 2) - 1,
+        y: 0
+      };
+    }, 500); // Delay of one-third of a second (333 milliseconds)
+  }
+}
 
     // Move the piece left
     function moveLeft() {
@@ -232,7 +224,7 @@
       e.preventDefault();
       const touchEndX = e.changedTouches[0].clientX;
       const touchEndY = e.changedTouches[0].clientY;
-
+      
       if (!touchMoved) {
         rotate();
       } else {
